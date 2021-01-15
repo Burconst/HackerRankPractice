@@ -1,0 +1,10 @@
+# vscode
+.vscode
+.ionide
+
+# Build files
+bin
+obj
+
+# Console apps
+*Console
