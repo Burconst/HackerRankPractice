@@ -155,10 +155,7 @@ namespace Mathematics.Fundamentals
 
         // Reverse Game
         // Source: https://www.hackerrank.com/challenges/reverse-game/problem
-        static int ballInPosition(int n, int index) 
-        {
-            return index % 2 != 0? index/2 : n-1 - (index)/2;
-        }
+        static int ballInPosition(int n, int index) => index % 2 != 0? index/2 : n-1 - (index)/2;
 
         public static int ReverseGame(int n, int k) 
         {   
@@ -169,6 +166,28 @@ namespace Mathematics.Fundamentals
             }
             return index;
         }
+
+        // Strange Grid Again
+        // Source: https://www.hackerrank.com/challenges/strange-grid/problem
+        public static ulong strangeGrid(ulong r, ulong c) => (ulong)(10*((r / 2) + (r % 2) - 1) + 2*(c-1) + ((r+1) % 2));
+
+        // Halloween party
+        // Source: https://www.hackerrank.com/challenges/halloween-party/problem
+        public static long halloweenParty(int k) => (k/2)*(k/2) + (k % 2 == 1 ? k/2 : 0);
+
+        // Filling Jars
+        // Source: https://www.hackerrank.com/challenges/filling-jars/problem
+        public static ulong solve(ulong n, ulong[][] operations) 
+        {
+            ulong mean = 0;
+            foreach (var item in operations)
+            {
+                mean += (item[1]-item[0]+1)*item[2];
+            }
+            return mean/n;
+        }
+
+
 
 
     }
