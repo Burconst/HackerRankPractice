@@ -93,7 +93,7 @@ namespace Mathematics.Fundamentals
 
         // Cutting Paper Squares
         // Source: https://www.hackerrank.com/challenges/p1-paper-cutting/problem
-        static System.Numerics.BigInteger solve(int n, int m) 
+        static System.Numerics.BigInteger CuttingPaperSquares(int n, int m) 
         {
             System.Numerics.BigInteger res = n;
             return  res*m - 1;
@@ -141,7 +141,7 @@ namespace Mathematics.Fundamentals
 
         // Restaurant
         // Source: https://www.hackerrank.com/challenges/restaurant/problem
-        public static int restaurant(int l, int b) {
+        public static int Restaurant(int l, int b) {
         int k = l*b;
         for(int a = 1; a <= Math.Sqrt(l*b); a++) 
         {
@@ -169,15 +169,15 @@ namespace Mathematics.Fundamentals
 
         // Strange Grid Again
         // Source: https://www.hackerrank.com/challenges/strange-grid/problem
-        public static ulong strangeGrid(ulong r, ulong c) => (ulong)(10*((r / 2) + (r % 2) - 1) + 2*(c-1) + ((r+1) % 2));
+        public static ulong StrangeGrid(ulong r, ulong c) => (ulong)(10*((r / 2) + (r % 2) - 1) + 2*(c-1) + ((r+1) % 2));
 
         // Halloween party
         // Source: https://www.hackerrank.com/challenges/halloween-party/problem
-        public static long halloweenParty(int k) => (k/2)*(k/2) + (k % 2 == 1 ? k/2 : 0);
+        public static long HalloweenParty(int k) => (k/2)*(k/2) + (k % 2 == 1 ? k/2 : 0);
 
         // Filling Jars
         // Source: https://www.hackerrank.com/challenges/filling-jars/problem
-        public static ulong solve(ulong n, ulong[][] operations) 
+        public static ulong FillingJars(ulong n, ulong[][] operations) 
         {
             ulong mean = 0;
             foreach (var item in operations)
