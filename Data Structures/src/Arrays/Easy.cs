@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Data_Structures
+namespace DataStructures.Arrays
 {
     public static class Easy
     {
