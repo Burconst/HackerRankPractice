@@ -139,6 +139,37 @@ namespace Mathematics.Fundamentals
             return bestDivisor;
         }
 
+        // Restaurant
+        // Source: https://www.hackerrank.com/challenges/restaurant/problem
+        public static int restaurant(int l, int b) {
+        int k = l*b;
+        for(int a = 1; a <= Math.Sqrt(l*b); a++) 
+        {
+            if( ((l*b) % (a*a) == 0) && ( (l % a == 0) && (b % a == 0) )) 
+            {
+                k = (l*b) / (a*a);
+            }
+        }
+        return k;
+    }
+
+        // Reverse Game
+        // Source: https://www.hackerrank.com/challenges/reverse-game/problem
+        static int ballInPosition(int n, int index) 
+        {
+            return index % 2 != 0? index/2 : n-1 - (index)/2;
+        }
+
+        public static int ReverseGame(int n, int k) 
+        {   
+            int index = 0;
+            while(ballInPosition(n, index) != k) 
+            {
+                index++;
+            }
+            return index;
+        }
+
 
     }
 }
