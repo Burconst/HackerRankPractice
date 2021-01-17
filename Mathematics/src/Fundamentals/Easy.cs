@@ -99,5 +99,46 @@ namespace Mathematics.Fundamentals
             return  res*m - 1;
         }
 
+        // Best Divisor
+        // Source: https://www.hackerrank.com/challenges/best-divisor/problem
+        static int digitsSum(int n) 
+        {
+            int sum = 0;
+            while(n > 0) 
+            {
+                sum += n % 10;
+                n = n / 10;
+            }
+            return sum;
+        }
+
+        static bool isBetter(int a, int b) 
+        {
+            int aDigitsSum = digitsSum(a);
+            int bDigitsSum = digitsSum(b);
+            if ((aDigitsSum > bDigitsSum) || (aDigitsSum == bDigitsSum) && (a < b))
+            {
+                return true;
+            }
+            return false;
+        }
+        
+        public static int BestDivisor(int n) 
+        {
+            int bestDivisor = 1;
+            for(int i = 1; i <= n; i++) 
+            {
+                if(n % i == 0) 
+                {
+                    if(isBetter(i, bestDivisor)) 
+                    {
+                        bestDivisor = i;
+                    }
+                }
+            }
+            return bestDivisor;
+        }
+
+
     }
 }
