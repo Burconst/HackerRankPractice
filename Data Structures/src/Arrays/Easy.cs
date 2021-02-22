@@ -8,7 +8,8 @@ namespace DataStructures.Arrays
 
         // Arrays - DS
         // Source: https://www.hackerrank.com/challenges/arrays-ds/problem
-        public static int[] ReverseArray(int[] a) {
+        public static int[] ReverseArray(int[] a) 
+        {
             for(int i = 0; i < a.Length/2; i++) 
             {
                 int tmp = a[i];
