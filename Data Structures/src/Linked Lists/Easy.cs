@@ -25,6 +25,43 @@ namespace DataStructures.LinkedLists
 
     }
 
+    public class DoublyLinkedListNode 
+    {
+        public int data;
+        public DoublyLinkedListNode next;
+        public DoublyLinkedListNode prev;
+
+        public DoublyLinkedListNode(int nodeData) {
+            this.data = nodeData;
+            this.next = null;
+            this.prev = null;
+        }
+    }
+
+    public class DoublyLinkedList 
+    {
+        public DoublyLinkedListNode head;
+        public DoublyLinkedListNode tail;
+
+        public DoublyLinkedList() {
+            this.head = null;
+            this.tail = null;
+        }
+
+        public void InsertNode(int nodeData) {
+            DoublyLinkedListNode node = new DoublyLinkedListNode(nodeData);
+
+            if (this.head == null) {
+                this.head = node;
+            } else {
+                this.tail.next = node;
+                node.prev = this.tail;
+            }
+
+            this.tail = node;
+        }
+    }
+
     public static class Easy
     {
 
@@ -188,6 +225,114 @@ namespace DataStructures.LinkedLists
             return newHead;
         }
 
+        // Get Node Value
+        // Source: https://www.hackerrank.com/challenges/get-the-value-of-the-node-at-a-specific-position-from-the-tail/problem
+        public static int GetNode(SinglyLinkedListNode head, int positionFromTail) 
+        {
+            var tmp = head;
+            int length = 0;
+            while(tmp != null) 
+            {
+                length++;
+                tmp = tmp.next;
+            }
+            int positionFromHead = length - positionFromTail - 1;
+            tmp = head;
+            while(positionFromHead != 0) 
+            {
+                positionFromHead--;
+                tmp = tmp.next;
+            }
+            return tmp.data;
+        }
 
+        // Delete duplicate-value nodes from a sorted linked list
+        // Source: https://www.hackerrank.com/challenges/delete-duplicate-value-nodes-from-a-sorted-linked-list/problem
+        static SinglyLinkedListNode removeDuplicates(SinglyLinkedListNode head) 
+        {
+            var tmp = head;
+            while (tmp.next != null)
+            {
+                if(tmp.data == tmp.next.data) 
+                {
+                    tmp.next = tmp.next.next;
+                }
+                else
+                {
+                    tmp = tmp.next;
+                }  
+            }
+            return head;
+        }
+
+        // Find Merge Point of Two Lists
+        // Source: https://www.hackerrank.com/challenges/find-the-merge-point-of-two-joined-linked-lists/problem
+        public static int FindMergeNode(SinglyLinkedListNode head1, SinglyLinkedListNode head2) 
+        {
+            var tmpRes = head1;
+            while(tmpRes != null) 
+            {
+                var tmp = head2;
+                while(tmp != null) 
+                {
+                    if(object.ReferenceEquals(tmp, tmpRes)) 
+                    {
+                        return tmp.data;
+                    }
+                    tmp = tmp.next;
+                }
+                tmpRes = tmpRes.next;
+            }
+            return -1;
+        }
+
+        // Inserting a Node Into a Sorted Doubly Linked List
+        // Source: https://www.hackerrank.com/challenges/insert-a-node-into-a-sorted-doubly-linked-list/problem
+        public static DoublyLinkedListNode SortedInsert(DoublyLinkedListNode head, int data) 
+        {
+            var tmp = head;
+            var newNode = new DoublyLinkedListNode(data);
+            if (head.data > newNode.data) 
+            {
+                newNode.next = head;
+                head.prev = newNode;
+                return newNode;
+            }
+            while (tmp.next != null && tmp.data < data) 
+            {
+            tmp = tmp.next;
+            }
+            if (tmp.next == null && tmp.data < newNode.data)
+            {
+                tmp.next = newNode;
+                newNode.prev = tmp;
+            }
+            else
+            {
+                newNode.next = tmp;
+                newNode.prev = tmp.prev;
+                tmp.prev = newNode;
+                newNode.prev.next = newNode;
+            }
+            return head;
+        }
+
+        // Reverse a doubly linked list
+        // Source: https://www.hackerrank.com/challenges/reverse-a-doubly-linked-list/problem
+        public static DoublyLinkedListNode Reverse(DoublyLinkedListNode head)
+        {
+            var newHead = head;
+            while(newHead.next != null) 
+            {
+                var tmp = newHead;
+                newHead = newHead.next;
+                var tmp2 = tmp.prev;
+                tmp.prev = tmp.next;
+                tmp.next = tmp2;
+            }
+            newHead.next = newHead.prev;
+            newHead.prev = null;
+            return newHead;
+        }
     }
 }
