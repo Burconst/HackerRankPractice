@@ -1,14 +1,5 @@
-using System.CodeDom.Compiler;
 using System.Collections.Generic;
-using System.Collections;
-using System.ComponentModel;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Runtime.Serialization;
-using System.Text.RegularExpressions;
 using System.Text;
 using System;
 
@@ -107,7 +98,7 @@ namespace Algorithm.Warmup
 
         // Mini-Max Sum
         // Source: https://www.hackerrank.com/challenges/mini-max-sum/problem
-        public static void miniMaxSum(ulong[] arr) 
+        public static void MiniMaxSum(ulong[] arr) 
         {
             var Max = new ulong[] { arr[0], arr[1], arr[2], arr[3] };
             Array.Sort(Max);
@@ -135,6 +126,50 @@ namespace Algorithm.Warmup
             Console.Write(Min[0] + " " + Max[0]);
         }
         
+
+        // Birthday Cake Candles
+        // Source: https://www.hackerrank.com/challenges/birthday-cake-candles/problem
+        public static int BirthdayCakeCandles(List<int> candles)
+        {
+            int max = candles.Max();
+            return candles.FindAll(x => x == max).Count;
+        }
+
+
+        // Time Conversion
+        // Source: https://www.hackerrank.com/challenges/time-conversion/problem
+        public static string TimeConversion(string s)
+        {
+            var res = new StringBuilder();
+            bool isNoon = false;
+            if (s[0] == '1' && s[1] == '2')
+            {
+                if (s[8] == 'A')
+                {
+                    res.Append("00");
+                } else 
+                {
+                    res.Append("12");
+                }
+                isNoon = true;
+            }
+            if (!isNoon)
+            {
+                if (s[8] == 'A')
+                {
+                    res.Append(s.Substring(0, 2));
+                }
+                else
+                {
+                    string hours = s.Substring(0, 2);
+
+                    res.Append((Convert.ToInt16(hours) + 12).ToString());
+                }
+            }
+            res.Append(s.Substring(2, 6));
+            return res.ToString();
+        }
+
 
     }
 }
